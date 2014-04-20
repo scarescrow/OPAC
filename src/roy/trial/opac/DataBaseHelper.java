@@ -12,7 +12,6 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
@@ -152,7 +151,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
  
 	}
 	
-	public Cursor trial(String name) {
+	public Cursor search(String name) {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = 
 	            db.query("library", // a. table
@@ -169,10 +168,33 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	        cursor.moveToFirst();
 			name = cursor.getString(0);
 		}*/
-		Log.d("tag", cursor.toString());
 		return cursor;
 	}
+	
+	public book search(int id) {
+		SQLiteDatabase db = this.getReadableDatabase();
+		book b;
+		b = new book();
+		Cursor cursor = 
+	            db.query("library", // a. table
+	            new String[] {"_id", "name", "author", "year", "shelf", "publisher", "copies"}, // b. column names
+	            "_id = ?", // c. selections 
+	            new String[] { String.valueOf(id) }, // d. selections args
+	            null, // e. group by
+	            null, // f. having
+	            null, // g. order by
+	            null); // h. limit
+		//Cursor cursor = db.rawQuery("SELECT name FROM library WHERE _id=1, selectionArgs)
+		
+		if (cursor != null && cursor.getCount() > 0) {
+	        cursor.moveToFirst();
+			b = new book(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4),
+					cursor.getString(5), cursor.getString(6));
+		}
+		return b;
+	}
  
+	
         // Add your public helper methods to access and get content from the database.
        // You could return cursors by doing "return myDataBase.query(....)" so it'd be easy
        // to you to create adapters for your views.

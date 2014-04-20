@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.widget.TableLayout;
@@ -21,6 +23,12 @@ import android.widget.TextView;
 public class ResultActivity extends Activity {
 
 	TableLayout tl;
+	
+	TableRow tr;
+	
+	String id, name, author;
+	
+	int count;
 	
 	Display display;
 	
@@ -44,6 +52,7 @@ public class ResultActivity extends Activity {
 		tr_head.setId(10);
 		tr_head.setBackgroundColor(Color.GRAY);
 		tr_head.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+		
 		
 		TextView label_sno = new TextView(this);
         label_sno.setId(20);
@@ -93,13 +102,10 @@ public class ResultActivity extends Activity {
 		
 		String search = i.getStringExtra("search");
 		
-		String id, name, author;
 		
-		int count = 0;
+        count = 0;
 		
-		TableRow tr;
-		
-		Cursor cursor = myDbHelper.trial(search);
+		Cursor cursor = myDbHelper.search(search);
 		
 		if (cursor != null && cursor.getCount() > 0) {
 	        cursor.moveToFirst();
@@ -112,32 +118,34 @@ public class ResultActivity extends Activity {
 			
 			tr = new TableRow(this);
 			
-			tr.setId(100 + count);
+			tr.setId(100000 + count);
 			tr.setLayoutParams(new LayoutParams(
 					LayoutParams.MATCH_PARENT,
 					LayoutParams.WRAP_CONTENT));
 			tr.setMinimumWidth(display.getWidth());
 			
 			TextView sn_label = new TextView(this);
-			sn_label.setId(200+count); 
+			sn_label.setId(2000000+count); 
 			sn_label.setText(id);
 			sn_label.setPadding(2, 0, 5, 0);
 			sn_label.setTextColor(Color.WHITE);
 			tr.addView(sn_label);
 			
 			TextView name_label = new TextView(this);
-			name_label.setId(200+count);
+			name_label.setId(300000+count);
 			name_label.setText(name);
 			name_label.setPadding(20, 0, 0, 0);
 			name_label.setTextColor(Color.WHITE);
 			tr.addView(name_label);
 			
 			TextView author_label = new TextView(this);
-			author_label.setId(200+count);
+			author_label.setId(400000+count);
 			author_label.setText(author);
 			author_label.setPadding(10, 0, 0, 0);
 			author_label.setTextColor(Color.WHITE);
 			tr.addView(author_label);
+			tr.setClickable(true);
+			tr.setOnClickListener(clicker);
 			
 			if(count%2!=0) {
 				tr.setBackgroundColor(Color.GRAY);
@@ -147,9 +155,12 @@ public class ResultActivity extends Activity {
 				author_label.setTextColor(Color.BLACK);
 			}
 			
+			//tr.setOnClickListener(clicker);
+			
 			tl.addView(tr, new TableLayout.LayoutParams(
                     LayoutParams.MATCH_PARENT,
                     LayoutParams.WRAP_CONTENT));
+			
 			
 			count+=1;
 		}
@@ -184,5 +195,17 @@ public class ResultActivity extends Activity {
 		getMenuInflater().inflate(R.menu.result, menu);
 		return true;
 	}
+	
+	public OnClickListener clicker = new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			String id = ((TextView)((TableRow)v).getChildAt(0)).getText().toString();
+			Intent i = new Intent(ResultActivity.this, FullActivity.class);
+			i.putExtra("id", id);
+			startActivity(i);
+		}
+	};
 
 }

@@ -8,5 +8,16 @@
     <string name="opac">OPAC</string>
     <string name="search">Search</string>
     <string name="title_activity_result">ResultActivity</string>
+    <string name="title_activity_full">FullActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="medium">Medium Text</string>
+    <string name="id">Id :</string>
+    <string name="title">Title :</string>
+    <string name="author">Author :</string>
+    <string name="year">Year :</string>
+    <string name="publisher">Publisher :</string>
+    <string name="shelf">Shelf :</string>
+    <string name="copies">No. of Copies :</string>
+    <string name="details">Full Details</string>
 
 </resources>

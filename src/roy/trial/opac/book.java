@@ -7,14 +7,42 @@ public class book {
 	
 	public book() {}
 	
-	public book(int id, String name, String author, int year, String shelf, String publisher, int copies) {
-		this.id = id;
+	public book(String id, String name, String author, String year, String shelf, String publisher, String copies) {
+		this.id = Integer.parseInt(id);
 		this.name = name;
 		this.author = author;
-		this.year = year;
+		this.year = Integer.parseInt(year);
 		this.shelf = shelf;
 		this.publisher = publisher;
-		this.copies = copies;
+		this.copies = Integer.parseInt(copies);
+	}
+	
+	public String id() {
+		return String.valueOf(this.id);
+	}
+	
+	public String name() {
+		return String.valueOf(this.name);
+	}
+	
+	public String author() {
+		return String.valueOf(this.author);
+	}
+	
+	public String year() {
+		return String.valueOf(this.year);
+	}
+	
+	public String shelf() {
+		return String.valueOf(this.shelf);
+	}
+	
+	public String publisher() {
+		return String.valueOf(this.publisher);
+	}
+	
+	public String copies() {
+		return String.valueOf(this.copies);
 	}
 
 }

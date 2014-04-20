@@ -26,6 +26,10 @@
             android:name="roy.trial.opac.ResultActivity"
             android:label="@string/title_activity_result" >
         </activity>
+        <activity
+            android:name="roy.trial.opac.FullActivity"
+            android:label="@string/title_activity_full" >
+        </activity>
     </application>
 
 </manifest>
