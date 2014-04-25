@@ -26,9 +26,9 @@ public final class R {
     public static final class id {
         public static final int action_settings=0x7f080013;
         public static final int author=0x7f080008;
-        public static final int button1=0x7f080010;
+        public static final int autoComplete=0x7f080010;
+        public static final int button1=0x7f080011;
         public static final int copies=0x7f08000a;
-        public static final int editText1=0x7f080011;
         public static final int hello=0x7f08000f;
         public static final int id=0x7f080002;
         public static final int main_table=0x7f080012;
@@ -49,6 +49,7 @@ public final class R {
         public static final int activity_full=0x7f030000;
         public static final int activity_main=0x7f030001;
         public static final int activity_result=0x7f030002;
+        public static final int list_item=0x7f030003;
     }
     public static final class menu {
         public static final int full=0x7f070000;

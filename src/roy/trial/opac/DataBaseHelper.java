@@ -193,6 +193,25 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		}
 		return b;
 	}
+	
+	public String[] getAll() {
+		
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.query("library", new String[] {"name"}, null, null, null, null, null);
+		
+		if(cursor.getCount() > 0) {
+			String[] str = new String[cursor.getCount()];
+			int i=0;
+			
+			while(cursor.moveToNext()) {
+				str[i] = cursor.getString(0);
+				i++;
+			}
+			return str;
+		}
+		
+		return new String[] {};
+	}
  
 	
         // Add your public helper methods to access and get content from the database.
