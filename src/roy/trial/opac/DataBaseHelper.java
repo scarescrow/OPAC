@@ -4,6 +4,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -171,6 +174,26 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		return cursor;
 	}
 	
+	public Cursor searchAuthor(String author, String exceptions) {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = 
+	            db.query("library", // a. table
+	            new String[] {"_id", "name", "author"}, // b. column names
+	            "author LIKE ? and _id NOT IN (?)", // c. selections 
+	            new String[] { "%" + author + "%", exceptions }, // d. selections args
+	            null, // e. group by
+	            null, // f. having
+	            null, // g. order by
+	            null); // h. limit
+		//Cursor cursor = db.rawQuery("SELECT name FROM library WHERE _id=1, selectionArgs)
+		
+		/*if (cursor != null && cursor.getCount() > 0) {
+	        cursor.moveToFirst();
+			name = cursor.getString(0);
+		}*/
+		return cursor;
+	}
+	
 	public book search(int id) {
 		SQLiteDatabase db = this.getReadableDatabase();
 		book b;
@@ -197,17 +220,21 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	public String[] getAll() {
 		
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.query("library", new String[] {"name"}, null, null, null, null, null);
+		Cursor cursor = db.query("library", new String[] {"name", "author"}, null, null, null, null, null);
 		
 		if(cursor.getCount() > 0) {
-			String[] str = new String[cursor.getCount()];
+			String[] str = new String[cursor.getCount() * 2];
 			int i=0;
 			
-			while(cursor.moveToNext()) {
+			 while(cursor.moveToNext()) {
 				str[i] = cursor.getString(0);
 				i++;
+				str[i] = cursor.getString(1);
+				i++;
 			}
-			return str;
+			Set<String> temp = new HashSet<String>(Arrays.asList(str));
+			String[] unique = temp.toArray(new String[temp.size()]);
+			return unique;
 		}
 		
 		return new String[] {};

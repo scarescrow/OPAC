@@ -111,6 +111,78 @@ public class ResultActivity extends Activity {
 	        cursor.moveToFirst();
 		}
 		
+		String[] ids = new String[cursor.getCount()];
+		
+		while(cursor.moveToNext()) {
+			id = cursor.getString(0);
+			name = cursor.getString(1);
+			author = cursor.getString(2);
+			
+			tr = new TableRow(this);
+			
+			tr.setId(100000 + count);
+			tr.setLayoutParams(new LayoutParams(
+					LayoutParams.MATCH_PARENT,
+					LayoutParams.WRAP_CONTENT));
+			tr.setMinimumWidth(display.getWidth());
+			
+			TextView sn_label = new TextView(this);
+			sn_label.setId(2000000+count); 
+			sn_label.setText(id);
+			sn_label.setPadding(2, 0, 5, 0);
+			sn_label.setTextColor(Color.WHITE);
+			tr.addView(sn_label);
+			
+			TextView name_label = new TextView(this);
+			name_label.setId(300000+count);
+			name_label.setText(name);
+			name_label.setPadding(20, 0, 0, 0);
+			name_label.setTextColor(Color.WHITE);
+			tr.addView(name_label);
+			
+			TextView author_label = new TextView(this);
+			author_label.setId(400000+count);
+			author_label.setText(author);
+			author_label.setPadding(10, 0, 0, 0);
+			author_label.setTextColor(Color.WHITE);
+			tr.addView(author_label);
+			tr.setClickable(true);
+			tr.setOnClickListener(clicker);
+			
+			if(count%2!=0) {
+				tr.setBackgroundColor(Color.GRAY);
+			} else {
+				sn_label.setTextColor(Color.BLACK);
+				name_label.setTextColor(Color.BLACK);
+				author_label.setTextColor(Color.BLACK);
+			}
+			
+			//tr.setOnClickListener(clicker);
+			
+			tl.addView(tr, new TableLayout.LayoutParams(
+                    LayoutParams.MATCH_PARENT,
+                    LayoutParams.WRAP_CONTENT));
+			
+			
+			ids[count] = id;
+			count+=1;
+		}
+		
+		Log.d("length", String.valueOf(ids.length));
+		String nots = "";
+		for(int j=0;j<count;j++) {
+			if(j==count-1)
+				nots = nots + "'" + ids[j] + "'";
+			else
+				nots = nots + "'" + ids[j] + "',";
+		}
+		
+		cursor = myDbHelper.searchAuthor(search, nots);
+		
+		if (cursor != null && cursor.getCount() > 0) {
+	        cursor.moveToFirst();
+		}		
+		
 		while(cursor.moveToNext()) {
 			id = cursor.getString(0);
 			name = cursor.getString(1);
