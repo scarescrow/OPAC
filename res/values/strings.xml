@@ -6,8 +6,8 @@
     <string name="to">To</string>
     <string name="opac">OPAC</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_result">ListOfBook</string>
-    <string name="title_activity_full">FullDetail</string>
+    <string name="title_activity_result">List Of Books</string>
+    <string name="title_activity_full">Complete Details</string>
     <string name="medium">Medium Text</string>
     <string name="id">Id: </string>
     <string name="title">Title: </string>
@@ -17,7 +17,7 @@
     <string name="copies">No. of Copies: </string>
     <string name="details">Full Details</string>
     <string name="male">Male</string>
-    <string name="app_name">Opac</string>
+    <string name="app_name">M-OPAC</string>
     <string name="database">Library Book DataBase</string>
     <string name="submit">Submit</string>
     <string name="showall">SearchByAuthor</string>
@@ -26,7 +26,7 @@
     <string name="secondname">SecondName</string>
     <string name="contactno">ContactNo</string>
     <string name="title_activity_data_base_helper">DataBaseHelper</string>
-    <string name="title_activity_display">Search Result</string>
+    <string name="title_activity_display">Welcome To M-OPAC</string>
     <string name="bookid">Author: </string>
     <string name="bookname">BookName :</string>
     <string name="shelf">Shelf: </string>

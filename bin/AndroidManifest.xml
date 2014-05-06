@@ -16,7 +16,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="roy.trial.opac.Splash"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,15 +26,18 @@
         </activity>
         <activity
             android:name="roy.trial.opac.ResultActivity"
-            android:label="@string/title_activity_result" >
+            android:label="@string/title_activity_result"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="roy.trial.opac.FullActivity"
-            android:label="@string/title_activity_full" >
+            android:label="@string/title_activity_full"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="roy.trial.opac.MainActivity"
-            android:label="@string/title_activity_display" >
+            android:label="@string/title_activity_display"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 
