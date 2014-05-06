@@ -39,5 +39,7 @@
     <string name="book_id">Book Id :</string>
     <string name="no_of_copies">No. of Copies: </string>
     <string name="search">Search</string>
+    <string name="splash">Splash</string>
+    <string name="title_activity_splash">Splash</string>
 
 </resources>

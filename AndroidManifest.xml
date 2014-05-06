@@ -9,13 +9,13 @@
         android:targetSdkVersion="18" />
 
     <application
+        android:name="android.app.Application"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:name="android.app.Application"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="roy.trial.opac.MainActivity"
+            android:name="roy.trial.opac.Splash"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,6 +30,10 @@
         <activity
             android:name="roy.trial.opac.FullActivity"
             android:label="@string/title_activity_full" >
+        </activity>
+        <activity
+            android:name="roy.trial.opac.MainActivity"
+            android:label="@string/title_activity_display" >
         </activity>
     </application>
 

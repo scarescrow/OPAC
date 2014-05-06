@@ -113,7 +113,7 @@ public class ResultActivity extends Activity {
 		
 		String[] ids = new String[cursor.getCount()];
 		
-		while(cursor.moveToNext()) {
+		do {
 			id = cursor.getString(0);
 			name = cursor.getString(1);
 			author = cursor.getString(2);
@@ -166,7 +166,7 @@ public class ResultActivity extends Activity {
 			
 			ids[count] = id;
 			count+=1;
-		}
+		} while(cursor.moveToNext());
 		
 		Log.d("length", String.valueOf(ids.length));
 		String nots = "";

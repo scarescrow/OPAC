@@ -55,7 +55,6 @@ public class MainActivity extends Activity {
 		}
 
 		try {
-
 			myDbHelper.openDataBase();
 
 		} catch (SQLException sqle) {

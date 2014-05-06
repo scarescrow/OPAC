@@ -225,7 +225,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		if(cursor.getCount() > 0) {
 			String[] str = new String[cursor.getCount() * 2];
 			int i=0;
-			
 			 while(cursor.moveToNext()) {
 				str[i] = cursor.getString(0);
 				i++;
